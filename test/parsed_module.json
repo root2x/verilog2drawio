@@ -1,0 +1,74 @@
+{
+    "module_name": "ctrl_cmd",
+    "param_list": [
+        {
+            "name": "CMD_ADDR_WIDTH",
+            "value": "12"
+        },
+        {
+            "name": "CMD_MAX_ADDR",
+            "value": "12'hFFF"
+        }
+    ],
+    "input_list": [
+        {
+            "name": "i_cmd_clk",
+            "width": 1,
+            "direction": "input",
+            "comment": "Control clock"
+        },
+        {
+            "name": "i_cmd_rst_n",
+            "width": 1,
+            "direction": "input",
+            "comment": "Control reset (active low)"
+        },
+        {
+            "name": "i_decode_done",
+            "width": 1,
+            "direction": "input",
+            "comment": "Signal to indicate that the command decoding is done and the next command can be issued"
+        },
+        {
+            "name": "i_once_start",
+            "width": 1,
+            "direction": "input",
+            "comment": "Signal to indicate the start of a new control transaction, only valid for the first transaction"
+        },
+        {
+            "name": "i_is_jump",
+            "width": 1,
+            "direction": "input",
+            "comment": "Signal to indicate whether the current command is a jump command"
+        },
+        {
+            "name": "i_jump_addr",
+            "width": "12",
+            "range": "[CMD_ADDR_WIDTH-1:0]",
+            "direction": "input",
+            "comment": "Control address input [CMD_ADDR_WIDTH-1:0]"
+        }
+    ],
+    "output_list": [
+        {
+            "name": "o_cmd_start",
+            "width": 1,
+            "direction": "output",
+            "comment": "Signal to indicate the start of a new control transaction (asserted for one clock cycle at the start of each transaction)"
+        },
+        {
+            "name": "o_cmd_addr_valid",
+            "width": 1,
+            "direction": "output",
+            "comment": "Signal to indicate that the command address output is valid"
+        },
+        {
+            "name": "o_cmd_addr",
+            "width": "12",
+            "range": "[CMD_ADDR_WIDTH-1:0]",
+            "direction": "output",
+            "comment": "Command address"
+        }
+    ],
+    "inout_list": []
+}
